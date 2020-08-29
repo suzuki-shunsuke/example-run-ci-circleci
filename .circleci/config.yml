@@ -1,43 +1,23 @@
 version: 2.1
 workflows:
-  update-pr:
-    jobs:
-      - update-pr:
-          filters:
-            branches:
-              only: /master/
   build:
     jobs:
-      - hello
-commands:
-  install-bash:
+      - build
+jobs:
+  build:
+    docker:
+      - image: plugins/git
     steps:
       - run:
           name: install bash
           command: apk add bash
-  install-tools:
-    steps:
+      - checkout
       - run:
           name: install tools
           command: bash ci/install-tools.sh
-jobs:
-  update-pr:
-    docker:
-      - image: plugins/git
-    steps:
-      - install-bash
-      - checkout
-      - install-tools
       - run:
           name: update pr
           command: bash ci/update-pr.sh
-  hello:
-    docker:
-      - image: plugins/git
-    steps:
-      - install-bash
-      - checkout
-      - install-tools
       - run:
           name: merge master
           command: bash ci/merge-master.sh
