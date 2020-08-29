@@ -1,0 +1,5 @@
+---
+owner: suzuki-shunsuke
+repo: example-run-ci-circleci
+expr: |
+  "ignore-run-ci" not in pr.labels && pr.user.login != "renovate[bot]"`
