@@ -16,11 +16,11 @@ jobs:
           name: install tools
           command: bash ci/install-tools.sh
       - run:
-          name: update pr
-          command: bash ci/update-pr.sh
-      - run:
           name: merge master
           command: bash ci/merge-master.sh
+      - run:
+          name: update pr
+          command: bash ci/update-pr.sh
       - run:
           name: hello
           command: bash ci/hello.sh
