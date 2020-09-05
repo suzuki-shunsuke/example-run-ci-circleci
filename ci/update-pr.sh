@@ -8,4 +8,4 @@ if [ "$CIRCLE_BRANCH" != master ]; then
   exit 0
 fi
 
-ghc exec -- run-ci update-pr --base master
+ghc exec -- run-ci update-pr --base master --log-level debug
